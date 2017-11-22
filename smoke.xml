@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="BBH test case suite">
+
+  <test name="LoginTest">
+    <classes>
+      <class name="com.BBH.testcase.Login"/>
+    </classes>
+  </test>
+  
+  <test name="Verify_Maintabs">
+    <classes>
+      <class name="com.BBH.testcase.Verify_Maintabs"/>
+    </classes>
+  </test>
+  
+  <test name="Reporting">
+    <classes>
+      <class name="com.BBH.testcase.Reporting"/>
+    </classes>
+  </test>
+  
+  <test name="Security Broker check">
+    <classes>
+      <class name="com.BBH.testcase.Security_Broker_check"/>
+    </classes>
+  </test>
+
+   <!-- Test -->
+</suite> <!-- Suite -->

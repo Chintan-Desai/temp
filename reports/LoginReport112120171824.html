@@ -1,0 +1,1389 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<meta charset='utf-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='MMM d, yyyy hh:mm:ss a'/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports-java/bee7a4abdc590e21eec8618a90c81ff4d16e500a/dist/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>ExtentReports</title>
+
+	<style type='text/css'>
+	</style>
+</head>
+
+	<body class='extent dark default hide-overflow '>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo blue darken-3">Extent</a>
+
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
+				<li class='waves-effect'><a href='#!' view='author-view' onclick="configureView(3)"><i class='material-icons'>person</i></a></li>
+			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+		</ul>
+
+		<!-- report name -->
+		<span class='report-name'>My Own Report</span>
+		
+		<!-- report headline -->
+		<span class='report-headline'></span>
+
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<li>
+                <a href='#!'>
+                    <span class='label suite-start-time blue darken-3'>Nov 21, 2017 06:24:26 PM</span>
+				</a>
+			</li>
+			<li>
+                <a href='#!'>
+                    <span class='label blue darken-3'>v3.1.0</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+		<!-- container -->
+		<div class='container'>
+
+<div id='test-view' class='view'>
+				
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+
+			<!-- category toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button category-toggle' data-activates='category-toggle' data-constrainwidth='false' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>local_offer</i> Category
+				</a>
+				<ul id='category-toggle' class='dropdown-content'>
+					<li><a href='#'>BBHAutomation</a></li>
+					<li class='divider'></li>
+					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
+				</ul>
+			</div>
+			<!-- category toggle -->
+
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+					<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+					<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+
+<div id='test-view-charts' class='subview-full'>
+	<div id='charts-row' class='row nm-v nm-h'>
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Tests</div>
+				<div class='chart-box'>
+					<canvas id='parent-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>4</span> test(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Steps</div>
+				<div class='chart-box'>
+					<canvas id='child-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='45.39%'><span class='strong'>64</span> step(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='54.61%'>77</span> others
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Tests</h5>
+			<ul id='test-collection' class='test-collection'>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>Login & Logout</span>
+						<span class='test-time'>Nov 21, 2017 06:24:26 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Nov 21, 2017 06:24:26 PM</span>
+	<span class='label end-time'>Nov 21, 2017 06:25:20 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 53s+552ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>BBHAutomation</span>
+			</div>
+			<div class='author-list'>
+				<span class='author label white-text'>NamanKumar</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:24:39 PM</td>
+					<td class='step-details'>Launch Chrome browser. Chrome browser with URL 'https://qcwebportal.bbh.com' lauched successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:24:42 PM</td>
+					<td class='step-details'>START --> Test Case Login & Logout functionality  Login & Logout Scenrios works functionality</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:24:42 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value 'a050982' in the field UserName. UserName was entered with Value 'a050982' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:24:43 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@65bb85</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:24:44 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value 'Selenium2018' in the field Password. Password was entered with Value 'Selenium2018' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:24:45 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@65bb85</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:24:50 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Login Button. Login Button was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:24:51 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@65bb85</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:24:55 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value 'kagdiwad' in the field Street. Street was entered with Value 'kagdiwad' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:24:56 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@65bb85</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:24:56 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value 'toyota' in the field First Car. First Car was entered with Value 'toyota' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:24:57 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@65bb85</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:24:58 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value '2010' in the field Year in which you buy fist car. Year in which you buy fist car was entered with Value '2010' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:24:59 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@65bb85</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:25:01 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Submit Button. Submit Button was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:25:03 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@65bb85</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:25:14 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Continue Tab. Continue Tab was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:25:16 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@65bb85</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:25:16 PM</td>
+					<td class='step-details'><span class='label white-text green'>Asserting Value of the field 'Welcome Text'. 'Welcome Text' was Asserted with value 'Shakir Kagzi - QC' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:25:17 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@65bb85</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:25:19 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Logout button. Logout button was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:25:20 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@65bb85</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:25:20 PM</td>
+					<td class='step-details'>End --> Test Case Login & Logout functionalityLogin & Logout Scenario works functionality</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+							<ul class='screenshots'>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268883604.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268883604.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268883604.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268885487.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268885487.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268885487.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268891805.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268891805.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268891805.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268896410.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268896410.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268896410.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268897984.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268897984.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268897984.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268899538.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268899538.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268899538.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268903298.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268903298.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268903298.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268916180.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268916180.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268916180.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268917703.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268917703.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268917703.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268920439.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268920439.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268920439.png'></li>
+							</ul>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify Maintabs</span>
+						<span class='test-time'>Nov 21, 2017 06:25:31 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Nov 21, 2017 06:25:31 PM</span>
+	<span class='label end-time'>Nov 21, 2017 06:27:59 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 2m 27s+579ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>BBHAutomation</span>
+			</div>
+			<div class='author-list'>
+				<span class='author label white-text'>NamanKumar</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:25:43 PM</td>
+					<td class='step-details'>Launch Chrome browser. Chrome browser with URL 'https://qcwebportal.bbh.com' lauched successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:25:45 PM</td>
+					<td class='step-details'>START --> Test Case Verify Maintabs functionality  Verify Maintabs Scenrios works functionality</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:25:45 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value 'a050982' in the field UserName. UserName was entered with Value 'a050982' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:25:46 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:25:46 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value 'Selenium2018' in the field Password. Password was entered with Value 'Selenium2018' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:25:48 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:25:50 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Login Button. Login Button was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:25:51 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:25:54 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value 'kagdiwad' in the field Street. Street was entered with Value 'kagdiwad' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:25:55 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:25:56 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value 'toyota' in the field First Car. First Car was entered with Value 'toyota' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:25:57 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:25:57 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value '2010' in the field Year in which you buy fist car. Year in which you buy fist car was entered with Value '2010' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:25:59 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:26:00 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Submit Button. Submit Button was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:26:01 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:26:13 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on Continue Tab. Click on Continue Tab was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:26:15 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:26:23 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on WorldViewtab. Click on WorldViewtab was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:26:24 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:26:24 PM</td>
+					<td class='step-details'><span class='label white-text green'>Asserting Value of the field 'TAB Is visible and clickable'. 'TAB Is visible and clickable' was Asserted with value 'My WorldView' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:26:26 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:26:36 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on BBH_App_Placetab. Click on BBH_App_Placetab was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:26:38 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:26:38 PM</td>
+					<td class='step-details'><span class='label white-text green'>Asserting Value of the field 'TAB Is visible and clickable'. 'TAB Is visible and clickable' was Asserted with value 'BBH App Place' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:26:39 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:26:45 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on Infomediarytab. Click on Infomediarytab was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:26:46 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:26:46 PM</td>
+					<td class='step-details'><span class='label white-text green'>Asserting Value of the field 'TAB Is visible and clickable'. 'TAB Is visible and clickable' was Asserted with value 'My Infomediary' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:26:48 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:27:12 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on ETFConnecttab. Click on ETFConnecttab was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:27:14 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:27:14 PM</td>
+					<td class='step-details'><span class='label white-text green'>Asserting Value of the field 'TAB Is visible and clickable'. 'TAB Is visible and clickable' was Asserted with value 'ETF Connect' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:27:15 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:27:56 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on Marketstab. Click on Marketstab was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:27:57 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:27:57 PM</td>
+					<td class='step-details'><span class='label white-text green'>Asserting Value of the field 'TAB Is visible and clickable'. 'TAB Is visible and clickable' was Asserted with value 'Markets' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:27:59 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@315f22</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:27:59 PM</td>
+					<td class='step-details'>End --> Test Case Verify Maintabs functionalityVerify Maintabs Scenario works functionality</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+							<ul class='screenshots'>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268946715.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268946715.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268946715.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268948286.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268948286.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268948286.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268951387.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268951387.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268951387.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268955970.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268955970.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268955970.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268957532.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268957532.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268957532.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268959086.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268959086.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268959086.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268961790.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268961790.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268961790.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268975173.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268975173.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268975173.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268984620.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268984620.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268984620.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268986135.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268986135.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268986135.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268998285.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268998285.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268998285.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268999784.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268999784.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511268999784.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269006788.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269006788.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269006788.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269008278.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269008278.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269008278.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269034033.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269034033.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269034033.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269035511.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269035511.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269035511.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269077578.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269077578.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269077578.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269079117.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269079117.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269079117.png'></li>
+							</ul>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>Reporting</span>
+						<span class='test-time'>Nov 21, 2017 06:28:10 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Nov 21, 2017 06:28:10 PM</span>
+	<span class='label end-time'>Nov 21, 2017 06:30:05 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 54s+904ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>BBHAutomation</span>
+			</div>
+			<div class='author-list'>
+				<span class='author label white-text'>NamanKumar</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:28:39 PM</td>
+					<td class='step-details'>Launch Chrome browser. Chrome browser with URL 'https://qcwebportal.bbh.com' lauched successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:28:41 PM</td>
+					<td class='step-details'>START --> Test Case Reporting functionality  Verify Reporting Scenrios works functionality</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:28:41 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value 'a050982' in the field UserName. UserName was entered with Value 'a050982' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:28:42 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:28:42 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value 'Selenium2018' in the field Password. Password was entered with Value 'Selenium2018' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:28:44 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:28:47 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Login Button. Login Button was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:28:48 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:28:52 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value 'kagdiwad' in the field Street. Street was entered with Value 'kagdiwad' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:28:53 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:28:53 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value 'toyota' in the field First Car. First Car was entered with Value 'toyota' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:28:54 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:28:55 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value '2010' in the field Year in which you buy fist car. Year in which you buy fist car was entered with Value '2010' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:28:56 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:29:04 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Submit Button. Submit Button was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:29:06 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:29:19 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Continue Tab. Continue Tab was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:29:21 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:29:21 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on Reporting Tab. Click on Reporting Tab was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:29:22 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:29:32 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on Reporting View tab. Click on Reporting View tab was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:29:34 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:29:34 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on Report in list. Click on Report in list was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:29:35 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:29:36 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on Report type. Click on Report type was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:29:37 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:29:37 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on Frequency. Click on Frequency was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:29:38 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:29:41 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on Submit tab. Click on Submit tab was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:29:42 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:29:44 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on Manage report type. Click on Manage report type was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:29:46 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:29:46 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on All type. Click on All type was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:29:47 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:29:49 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on All Report . Click on All Report  was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:29:50 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:29:50 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on Template Name. Click on Template Name was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:29:52 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:29:53 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on Admin. Click on Admin was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:29:55 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:29:55 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value 'NEW' in the field Report Name. Report Name was entered with Value 'NEW' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:29:56 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:29:58 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on Add. Click on Add was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:29:59 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:29:59 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Select Report. Select Report was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:30:00 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@c4245d</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:30:05 PM</td>
+					<td class='step-details'>End --> Test Case Verify Maintabs functionalityVerify Maintabs Scenario works functionality</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+							<ul class='screenshots'>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269122693.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269122693.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269122693.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269124308.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269124308.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269124308.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269128800.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269128800.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269128800.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269133380.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269133380.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269133380.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269134950.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269134950.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269134950.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269136695.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269136695.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269136695.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269146040.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269146040.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269146040.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269161132.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269161132.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269161132.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269162796.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269162796.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269162796.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269174216.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269174216.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269174216.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269175860.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269175860.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269175860.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269177391.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269177391.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269177391.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269178956.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269178956.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269178956.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269182686.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269182686.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269182686.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269186095.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269186095.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269186095.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269187865.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269187865.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269187865.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269190774.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269190774.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269190774.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269192358.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269192358.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269192358.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269195284.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269195284.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269195284.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269196853.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269196853.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269196853.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269199468.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269199468.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269199468.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269200979.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269200979.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269200979.png'></li>
+							</ul>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='4'>
+					<div class='test-heading'>
+						<span class='test-name'>Security Broker check</span>
+						<span class='test-time'>Nov 21, 2017 06:30:16 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Nov 21, 2017 06:30:16 PM</span>
+	<span class='label end-time'>Nov 21, 2017 06:31:34 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 18s+222ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>BBHAutomation</span>
+			</div>
+			<div class='author-list'>
+				<span class='author label white-text'>NamanKumar</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:30:29 PM</td>
+					<td class='step-details'>Launch Chrome browser. Chrome browser with URL 'https://qcwebportal.bbh.com' lauched successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:30:31 PM</td>
+					<td class='step-details'>START --> Test Case Reporting functionality  Verify Reporting Scenrios works functionality</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:30:31 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value 'a050982' in the field UserName. UserName was entered with Value 'a050982' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:30:33 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@1c119b7</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:30:33 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value 'Selenium2018' in the field Password. Password was entered with Value 'Selenium2018' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:30:34 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@1c119b7</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:30:39 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Login Button. Login Button was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:30:40 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@1c119b7</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:30:43 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value 'kagdiwad' in the field Street. Street was entered with Value 'kagdiwad' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:30:45 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@1c119b7</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:30:45 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value 'toyota' in the field First Car. First Car was entered with Value 'toyota' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:30:46 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@1c119b7</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:30:47 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value '2010' in the field Year in which you buy fist car. Year in which you buy fist car was entered with Value '2010' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:30:48 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@1c119b7</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:30:52 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Submit Button. Submit Button was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:30:53 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@1c119b7</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:31:11 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Continue Tab. Continue Tab was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:31:13 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@1c119b7</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:31:13 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on List. Click on List was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:31:14 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@1c119b7</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:31:14 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on Security Description. Click on Security Description was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:31:16 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@1c119b7</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:31:16 PM</td>
+					<td class='step-details'><span class='label white-text green'>Entering value '101' in the field Enter Text. Enter Text was entered with Value '101' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:31:17 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@1c119b7</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:31:18 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on Search. Click on Search was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:31:19 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@1c119b7</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:31:19 PM</td>
+					<td class='step-details'>Switched to popup  window successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:31:31 PM</td>
+					<td class='step-details'><span class='label white-text green'>Click Click on Request. Click on Request was Clicked Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:31:33 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@1c119b7</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:31:33 PM</td>
+					<td class='step-details'><span class='label white-text green'>Asserting Value of the field 'SECURITY STATUS'. 'SECURITY STATUS' was Asserted with value 'ACTIVE' Successfully</span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:31:34 PM</td>
+					<td class='step-details'>Snapshot Below: com.aventstack.extentreports.ExtentTest@1c119b7</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:31:34 PM</td>
+					<td class='step-details'>End --> Test Case Verify Maintabs functionalityVerify Maintabs Scenario works functionality</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+							<ul class='screenshots'>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269233066.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269233066.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269233066.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269234692.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269234692.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269234692.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269240630.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269240630.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269240630.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269245237.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269245237.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269245237.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269246845.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269246845.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269246845.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269248425.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269248425.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269248425.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269253899.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269253899.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269253899.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269273026.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269273026.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269273026.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269274613.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269274613.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269274613.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269276152.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269276152.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269276152.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269277796.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269277796.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269277796.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269279628.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269279628.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269279628.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269293003.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269293003.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269293003.png'></li>
+								<li><img data-featherlight='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269294496.png' width='10%' src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269294496.png' data-src='E:\WorkspaceOxygen\ETF Auto\ETF Auto\snapshots\snapshorts1511269294496.png'></li>
+							</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='test-name'></h5>
+
+			<div id='step-filters' class="right">
+				<span class="blue-text" status="info" alt="info" title="info"><i class="material-icons">info_outline</i></span>
+				<span class="green-text" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></span>
+				<span class="red-text" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></span>
+				<span class="red-text text-darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></span>
+				<span class="pink-text text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></span>
+				<span class="orange-text" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></span>
+				<span class="teal-text" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></span>
+				<span status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></span>
+			</div>
+		</div>
+	</div>
+	<!-- subview right -->
+
+</div>
+<!-- test view -->
+<div id='category-view' class='view hide'>
+
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+				
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Categories</h3>
+			<ul id='category-collection' class='category-collection'>
+				
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>BBHAutomation</span>
+						<span class='category-status right'>
+							<span class='label pass'>4</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 4</span>
+							
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Nov 21, 2017 06:24:26 PM</td>
+										<td class='linked' test-id='1'>Login & Logout</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Nov 21, 2017 06:25:31 PM</td>
+										<td class='linked' test-id='2'>Verify Maintabs</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Nov 21, 2017 06:28:10 PM</td>
+										<td class='linked' test-id='3'>Reporting</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Nov 21, 2017 06:30:16 PM</td>
+										<td class='linked' test-id='4'>Security Broker check</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='category-name'></h5>
+		</div>
+	</div>
+</div>
+<!-- category view -->
+<div id='author-view' class='view hide'>
+    <section id='controls'>
+        <div class='controls grey lighten-4'>
+            <!-- search -->
+            <div class='chip transparent' alt='Search Authors' title='Search Authors'>
+                <a href="#" class='search-div'>
+                    <i class='material-icons'>search</i> Search
+                </a>
+
+                <div class='input-field left hide'>
+                    <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Authors...'>
+                </div>
+
+            </div>
+            <!-- search -->
+        </div>
+    </section>
+
+    <div class='subview-left left'>
+
+        <div class='view-summary'>
+            <h5>Authors</h5>
+                <ul id='author-collection' class='author-collection'>
+
+                        <li class='author displayed active'>
+                            <div class='author-heading'>
+                                <span class='author-name'>NamanKumar</span>
+                                <span class='author-status right'>
+                                        <span class='label pass'>4</span>
+						        </span>
+                            </div>
+                            <div class='author-content hide'>
+                                <div class='author-status-counts'>
+                                    <span class='label green accent-4 white-text'>Passed: 4</span>
+                                    
+                                    
+                                </div>
+
+                                <div class='author-tests'>
+                                    <table class='bordered table-results'>
+                                        <thead>
+                                        <tr>
+                                            <th>Timestamp</th>
+                                            <th>TestName</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Nov 21, 2017 06:24:26 PM</td>
+                                                <td class='linked' test-id='1'>Login & Logout</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nov 21, 2017 06:25:31 PM</td>
+                                                <td class='linked' test-id='2'>Verify Maintabs</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nov 21, 2017 06:28:10 PM</td>
+                                                <td class='linked' test-id='3'>Reporting</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nov 21, 2017 06:30:16 PM</td>
+                                                <td class='linked' test-id='4'>Security Broker check</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </li>
+
+                </ul>
+        </div>
+    </div>
+
+    <div class='subview-right left'>
+        <div class='view-summary'>
+            <h5 class='author-name'></h5>
+        </div>
+    </div>
+</div>
+<!-- exception view -->
+<div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Tests
+					<div class='panel-lead'>4</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>141</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Nov 21, 2017 06:24:26 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Nov 21, 2017 06:31:34 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>427,711ms</div>
+				</div>
+			</div>
+			<div class='col s4'>
+				<div class='card-panel dashboard-categories'>
+					<span class='right label cyan white-text'>Categories</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Passed</th>
+							<th>Failed</th>
+							<th>Others</th>
+						</tr>
+						<tr>
+							<td>BBHAutomation</td>
+							<td>4</td>
+							<td>0</td>
+							<td>0</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<!-- testrunner-logs view -->
+		</div>
+		<!-- container -->
+
+		<script>
+			var statusGroup = {
+				passParent: 4,
+				failParent: 0,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				exceptionsParent: 0,
+				
+				passChild: 64,
+				failChild: 0,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 77,
+				exceptionsChild: 0,
+				
+				passGrandChild: 0,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				exceptionsGrandChild: 0,
+			};
+		</script>
+		
+			<script src='https://cdn.rawgit.com/anshooarora/extentreports-java/fca20fb7653aade98810546ab96a2a4360e3e712/dist/js/extent.js' type='text/javascript'></script>
+		
+		
+ 		<script type='text/javascript'>
+ 		</script>
+	</body>
+	
+</html>

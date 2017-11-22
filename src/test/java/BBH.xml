@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="URL">https://qcwebportal.bbh.com</entry>
+<!-- TP user  and password-->
+<entry key="TPUserID">a050982</entry>
+<entry key="TPPassword">Automation2017</entry>
+<entry key="street">kagdiwad</entry>
+<entry key="FirstCar">toyota</entry>
+<entry key="YearfirstCar">2010</entry>
+
+
+<entry key="AppName">Brown Brothers Harriman</entry>
+<entry key="Environment">QA</entry>
+<entry key="Browsers">chrome</entry>
+</properties>
